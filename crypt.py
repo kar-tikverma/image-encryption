@@ -2,7 +2,6 @@ import math
 import numpy
 import cv2
 import matplotlib.pyplot as plt
-from reshape import *
 from tkinter import filedialog
 import tkinter
 import random
@@ -21,6 +20,34 @@ def image_selector():
         print("Error Image not loaded!")
     return path
 
+def reshape_to2D (lst, rows, cols):
+    if rows * cols != len (lst):
+        print ("Can not convert an array of ", len(lst), " elements to an array of size ", rows, "x", cols, sep = "")
+        return
+    newList = [[0 for i in range(cols)] for j in range(rows)]
+    for i in range (rows):
+        for j in range (cols):
+            newList[i][j] = lst[(cols*i) + j]
+    return newList
+
+def reshape_to2D_image (lst, rows, cols):
+    if rows * cols != len (lst):
+        print ("Can not convert an array of ", len(lst), " elements to an array of size ", rows, "x", cols, sep = "")
+        return
+    newList = numpy.ndarray (shape=(rows,cols), dtype=numpy.uint8)
+    for i in range (rows):
+        for j in range (cols):
+            newList[i][j] = lst[(cols*i) + j]
+    return newList
+
+def reshape_to1D (matrix):
+    rows = len(matrix)
+    cols = len(matrix[0])
+    newarr = [0 for j in range (rows * cols)]
+    for i in range (rows):
+        for j in range (cols):
+            newarr[cols*i + j] = matrix[i][j]
+    return newarr
 
 def MAP (rows, cols, primeN):
     TT = [0 for i in range (rows*cols)]
@@ -186,8 +213,6 @@ def calculateBin (dna):
             bin += '10'
     
     return bin
-
-key = {'p' : 97, 'y0' : 0.14584390650801455, 'B' : 3.8457838656}
 
 def encryptImage (image):
     SB, ScI = scramble_image(image, key['y0'], key['B'], key['p'])
@@ -541,4 +566,5 @@ def main():
     diagonalDistribution (encImg, imageName = "Encrypted Image")
 
 if __name__ == '__main__':
+    key = {'p' : 97, 'y0' : 0.14584390650801455, 'B' : 3.8457838656}
     main ()
