@@ -566,5 +566,5 @@ def main():
     diagonalDistribution (encImg, imageName = "Encrypted Image")
 
 if __name__ == '__main__':
-    key = {'p' : 97, 'y0' : 0.14584390650801455, 'B' : 3.8457838656647634}
+    key = {'p' : 97, 'y0' : 0.14584390650801455, 'B' : 3.84518392560476384}
     main ()
