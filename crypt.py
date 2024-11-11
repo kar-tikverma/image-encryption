@@ -53,7 +53,7 @@ def MAP (rows, cols, primeN):
     n = rows * cols
     TT = [0 for i in range (n)]
     for i in range (n):
-        TT[i] = ((primeN * i) % n)
+        TT[i] = (primeN * i) % n
     return TT
     
 def sineMap (S, B, y0):
