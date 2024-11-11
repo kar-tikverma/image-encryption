@@ -50,9 +50,10 @@ def reshape_to1D (matrix):
     return newarr
 
 def MAP (rows, cols, primeN):
-    TT = [0 for i in range (rows*cols)]
+    n = rows * cols
+    TT = [0 for i in range (n)]
     for i in range (rows*cols):
-        TT[i] = ((primeN * i) % (rows * cols))
+        TT[i] = ((primeN * i) % (n))
     return TT
     
 def sineMap (S, B, y0):
