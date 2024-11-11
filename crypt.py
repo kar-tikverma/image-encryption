@@ -8,7 +8,7 @@ import random
 
 def image_selector():
     path = filedialog.askopenfilename()
-    if path != "":
+    if path:
         name = ""
         i = -1
         while path[i] != "/":
